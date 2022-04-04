@@ -65,25 +65,11 @@ func Quote() QuoteStructure {
 
 // My doc
 func (stock *QuoteStructure) Price() float64 {
-	switch stock.MarketState {
-	case "PRE":
-		return stock.PreMarketPrice
-	case "POST":
-		return stock.PostMarketPrice
-	default:
-		return stock.RegularMarketPrice
-	}
+	return stock.RegularMarketPrice
 }
 
 func (stock *QuoteStructure) PriceState() bool {
-	switch stock.MarketState {
-	case "PRE":
-		return !math.Signbit(stock.PreMarketChange)
-	case "POST":
-		return !math.Signbit(stock.PostMarketChange)
-	default:
-		return !math.Signbit(stock.RegularMarketChange)
-	}
+	return !math.Signbit(stock.RegularMarketChange)
 }
 
 func (stock *QuoteStructure) State() string {
@@ -101,25 +87,11 @@ func (stock *QuoteStructure) State() string {
 }
 
 func (stock *QuoteStructure) MarketChangePercent() string {
-	switch stock.MarketState {
-	case "PRE":
-		return fmt.Sprintf("%.2f", stock.PreMarketChangePercent) + "%"
-	case "POST":
-		return fmt.Sprintf("%.2f", stock.PostMarketChangePercent) + "%"
-	default:
-		return fmt.Sprintf("%.2f", stock.RegularMarketChangePercent) + "%"
-	}
+	return fmt.Sprintf("%.2f", stock.RegularMarketChangePercent) + "%"
 }
 
 func (stock *QuoteStructure) MarketChange() string {
-	switch stock.MarketState {
-	case "PRE":
-		return fmt.Sprintf("%.2f ", stock.PreMarketChange) + stock.Currency
-	case "POST":
-		return fmt.Sprintf("%.2f ", stock.PostMarketChange) + stock.Currency
-	default:
-		return fmt.Sprintf("%.2f", stock.RegularMarketChange) + stock.Currency
-	}
+	return fmt.Sprintf("%.2f", stock.RegularMarketChange) + stock.Currency
 }
 
 func (stock *QuoteStructure) MarketVolume() int {
