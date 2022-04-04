@@ -5,4 +5,4 @@ compile:
 	GOOS=linux GOARCH=386 go build -o release/linux/CoveStonks main.go
 	GOOS=linux GOARCH=amd64 go build -o release/linux/CoveStonks-amd64 main.go
 	GOOS=windows GOARCH=386 go build -o release/windows/CoveStonks.exe main.go
-	GOOS=windows GOARCH=amd64 go build -o release/windows/CoveoStonks-amd64 main.go
+	GOOS=windows GOARCH=amd64 go build -o release/windows/CoveoStonks-amd64.exe main.go
