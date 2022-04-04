@@ -20,7 +20,7 @@ func main() {
 		stock := api.Quote()
 		price := msg.StockPrice(stock.Price(), stock.PriceState())
 		utils.TerminalTitle(stock.Price())
-		statistics := msg.Statistics(stock, 60)
+		statistics := msg.Statistics(stock, 43830000)
 		area.Update(price + statistics)
 		time.Sleep(time.Second * 5)
 	}
